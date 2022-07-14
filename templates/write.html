@@ -7,129 +7,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <!-- Font Awesome CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='reset.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <!--  //css  -->
 
-    <title>건의 사항 등록</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            font-family: 'Gowun Batang', serif;
-        }
-        .write-wrap {
-            width: 1200px;
-            margin: 0 auto;
-        }
-        .top-content {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            width: 1200px;
-            margin: 100px auto 30px 0;
-        }
-        .card-img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 300px;
-            height: 300px;
-            text-align: center;
-            border: 1px solid #dddddd;
-            margin-left: 80px;
-        }
-        .card2-info {
-            width: 300px;
-        }
-        #anonymous_info, #secret_info {
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        #anonymous0, #secret0 {
-            position: relative;
-            top: 3px;
-            zoom: 1.3;
-        }
-        label[for="anonymous0"], label[for="secret0"] {
-            color: gray;
-        }
-        .form-group {
-            text-align: center;
-        }
-        .form-control2 {
-            margin-top: 20px;
-            height: 200px;
-            width: 800px;
-            border: 2px solid black;
-        }
-        .click {
-            margin-top: 20px;
-            margin-left: 500px;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-            bsCustomFileInput.init()
-            listing()
-        })
-
-        // function listing() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "/user",
-        //         data: {},
-        //         success: function (response) {
-        //             let rows = response['user']
-        //             for (let i = 0; i < rows.length; i++) {
-        //                 let name = rows[i]['name']
-        //                 let address = rows[i]['address']
-        //
-        //                 let temp_html = `<p><span>이름:</span><input class="form-control form-control-sm" type="text" aria-label="${name}"></p>
-        //                                  <p><span>동, 호수:</span><input class="form-control form-control-sm" type="text" aria-label="${address}"></p>`
-        //                 $('#card2-info').append(temp_html)
-        //             }
-        //         }
-        //     })
-        // }
-        function save_order() {
-            let content = $('#content').val()
-            let time = $('#time').val()
-            let anonymous0 = $('#anonymous0').val()
-            let secret0 =$('#secret0').val()
-            let file = $('#file')[0].files[0]
-            let form_data = new FormData()
-
-
-            form_data.append("file_give", file)
-            form_data.append("content_give", content)
-            form_data.append("anonymous0_give", anonymous0)
-            form_data.append("secret0_give", secret0)
-            form_data.append("time_give", time)
-
-            // form_data.append("name_give", name)
-            // form_data.append("address_give", address)
-
-            $.ajax({
-                type: "POST",
-                url: "/posting",
-                data: form_data,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    alert(response["msg"])
-                    window.location.reload()
-                }
-            });
-        }
-    </script>
+    <!-- js -->
+    <script src="https://kit.fontawesome.com/575347b31c.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="{{ url_for('static', filename ='all.js') }}"></script>
+    <!-- //js -->
 </head>
 <body>
+<div class="header">
+    <h1><a href=""><strong>우아해 <i class="fa-solid fa-screwdriver-wrench"></i></strong></a></h1>
+    <div class="btn-wrap">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" onclick="location.href='{{ url_for('write') }}'">
+                건의사항
+            </button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary is-sparta is-outlined" aria-label="logout"
+                    onclick="sign_out()">로그아웃 <span class="icon is-small"><i class="fa fa-sign-out"
+                                                                             aria-hidden="true"></i></span></button>
+        </div>
+
+    </div>
+</div>
+
 <div class="write-wrap">
     <div class="top-content">
         <div class="card-img">
@@ -169,5 +84,6 @@
         <!--        <a href="{{ url_for('main') }}" class="btn btn-warning mybtn2" tabindex="-1"-->
 <!--           role="button" aria-disabled="true">되돌아가기</a>-->
     </div>
+</div>
 </body>
 </html>

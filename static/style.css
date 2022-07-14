@@ -1,0 +1,236 @@
+/* common */
+* {
+    font-family: 'Jua', sans-serif;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+/* //common */
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 40px 100px;
+}
+
+.header h1 {
+    width: 20%;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #333;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.header a strong {
+    margin-left: 10px;
+}
+
+.header a img {
+    width: 10%;
+}
+
+.btn-wrap {
+    width: 100%;
+    text-align: right;
+}
+
+/* //header */
+
+/* login */
+.login-wrap .login-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.login-wrap .login-img::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("login_bg.jpg") no-repeat;
+    background-size: cover;
+}
+
+.login-wrap .logo-title {
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url(login_bg02.jpg) no-repeat 0 0;
+    background-size: 100%;
+}
+
+.login-wrap .login-box {
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.login-wrap .login-box .box {
+    width: 50%;
+    padding-top: 90px;
+    border-radius: 0;
+}
+
+.login-wrap .mb-5 {
+    margin-bottom: 2rem !important;
+}
+
+.is-sparta {
+    color: #0d6efd !important;
+}
+
+.btn-outline-primary:hover {
+    color: #ffffff !important;
+}
+
+.button.is-sparta {
+    background-color: #0d6efd;
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.button.is-sparta.is-outlined {
+    background-color: transparent;
+    border-color: #0d6efd;
+    color: #0d6efd !important;
+}
+
+.help {
+    color: gray;
+}
+
+/* //login */
+
+/* main */
+.main-bg {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.content-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    margin: 50px auto 0;
+}
+
+.content-wrap .help-box {
+    width: 270px;
+    text-align: center;
+    margin: 0 15px 30px;
+    border: 1px solid #c3c3c6;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 0 0 20px;
+}
+
+.content-wrap .help-box:hover {
+    border: 1px solid #0d6efd;
+    box-shadow: 15px 15px 15px #d1d1d7;
+}
+
+.content-wrap .help-box .txt-box {
+    margin: 30px 10px;
+    padding: 20px 0;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.content-wrap .help-box .info {
+    margin-top: 20px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.content-wrap .help-box .info strong {
+}
+
+/* //main */
+
+/* 등록하기 */
+.write-wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.top-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1200px;
+    margin: 100px auto 30px 0;
+}
+
+.card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    margin-left: 80px;
+}
+
+.card2-info {
+    width: 300px;
+}
+
+#anonymous_info, #secret_info {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#anonymous, #secret {
+    position: relative;
+    top: 3px;
+    zoom: 1.3;
+}
+
+label[for="anonymous0"], label[for="secret0"] {
+    color: gray;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.form-control2 {
+    margin-top: 20px;
+    height: 200px;
+    width: 800px;
+    border: 2px solid black;
+}
+
+.click {
+    margin-top: 20px;
+    margin-left: 500px;
+}
+
+/* //등록하기 */
+
+
+
