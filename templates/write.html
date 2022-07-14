@@ -155,10 +155,9 @@
     <div class="form-group">
         <textarea class="form-control2" id="content" rows="3" placeholder="글 작성"></textarea>
     </div>
-    <div class="click">
-        <button onclick="save_order()" type="button" class="btn btn-warning mybtn">등록하기</button>
-        <a href="https://getbootstrap.com/docs/5.0/components/buttons/" class="btn btn-warning mybtn2" tabindex="-1" role="button" aria-disabled="true">되돌아가기</a>
-    </div>
+        <button onClick="save_order();window.location.href='{{ url_for('main') }}';"
+                type="button" className="btn btn-warning mybtn">되돌아가기
+        </button>
 </div>
 </body>
 </html>
