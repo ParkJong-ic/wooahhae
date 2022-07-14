@@ -29,12 +29,17 @@
 </head>
 <body>
 <div class="header">
+<<<<<<< HEAD
     <h1><a href=""><strong>우아해 <i class="fa-solid fa-screwdriver-wrench"></i></strong></a></h1>
+=======
+    <h1><a href="{{ url_for('main') }}"><strong>우아해 <i class="fa-solid fa-screwdriver-wrench"></i></strong></a></h1>
+>>>>>>> master
     <div class="btn-wrap">
         <div class="btn-group" role="group" aria-label="Basic outlined example">
             <button type="button" class="btn btn-outline-primary" onclick="location.href='{{ url_for('write') }}'">
                 건의사항
             </button>
+<<<<<<< HEAD
         </div>
         <div class="btn-group" role="group" aria-label="Basic outlined example">
             <button type="button" class="btn btn-outline-primary is-sparta is-outlined" aria-label="logout"
@@ -83,6 +88,61 @@
 
         <!--        <a href="{{ url_for('main') }}" class="btn btn-warning mybtn2" tabindex="-1"-->
 <!--           role="button" aria-disabled="true">되돌아가기</a>-->
+=======
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary is-sparta is-outlined" aria-label="logout"
+                    onclick="sign_out()">로그아웃 <span class="icon is-small"><i class="fa fa-sign-out"
+                                                                             aria-hidden="true"></i></span></button>
+        </div>
+
+    </div>
+</div>
+<div class="content-bg">
+    <div class="write-wrap">
+        <div class="top-content">
+            <div class="file-wrap">
+                <div class="card-img">
+                    <form action="${pageContext.request.contextPath}/updatetNoticePro.do" method="post"
+                          enctype="multipart/form-data" name="noticeForm">
+                        <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}"/>
+                    </form>
+                </div>
+                <input type='file' id="file" name="filename"/>
+            </div>
+            <div class="card2-info">
+                <div class="chk">
+                    <div id="anonymous_info">
+                        <input type="checkbox" name="anonymous" id="anonymous" class="selec_chk">
+                        <label for="anonymous">익명</label>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+                        <input type="text" class="form-control form-control-sm" id="writer" aria-label=".form-control-lg example"
+                                value="{{ user_info.name }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">동, 호수</span>
+                        <input class="form-control form-control-sm" id="address" type="text"
+                                                 aria-label=".form-control-lg example" value="{{ user_info.address }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control2" id="content" rows="3" placeholder="글 작성"></textarea>
+        </div>
+        <div class="click">
+            <button onclick="save_order();window.location.href='{{ url_for('main') }}';alert('등록이 완료되었습니다~^^')"
+                    type="button" class="btn btn-outline-primary">등록하기
+            </button>
+            <button onclick="window.location.href='{{ url_for('main') }}';"
+                    type="button" class="btn btn-outline-primary">되돌아가기
+            </button>
+        </div>
+>>>>>>> master
     </div>
 </div>
 </body>

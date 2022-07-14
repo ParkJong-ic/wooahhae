@@ -28,17 +28,29 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
+<<<<<<< HEAD
 @app.route('/main')
+=======
+@app.route('/main', methods=['GET'])
+>>>>>>> master
 def main():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"email": payload["email"]})
+<<<<<<< HEAD
         return render_template('main.html', user_info=user_info)
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("main.html"))
 
 
+=======
+        posts = list(db.posting.find({}, {'_id': False}))
+        return render_template('main.html', user_info=user_info, posts=posts, name=user_info["name"])
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("main.html"))
+
+>>>>>>> master
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
@@ -88,7 +100,7 @@ def sign_up():
 @app.route('/sign_up/check_dup', methods=['POST'])
 def check_dup():
     email_receive = request.form['email_give']
-    exists = bool(db.users.find_one({"username": email_receive}))
+    exists = bool(db.users.find_one({"email": email_receive}))
     return jsonify({'result': 'success', 'exists': exists})
 
 @app.route("/posting", methods=["POST"])
@@ -183,7 +195,11 @@ def web_detail_get(num):
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"email": payload["email"]})
+<<<<<<< HEAD
         return render_template('detail.html', user_info=user_info, index=index)
+=======
+        return render_template('detail.html', user_info=user_info, index=index, name=user_info["name"])
+>>>>>>> master
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("main.html"))
 

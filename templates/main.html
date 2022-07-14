@@ -22,6 +22,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="{{ url_for('static', filename ='all.js')}}"></script>
     <!-- //js -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 </head>
 <body>
     <div class="header">
@@ -41,6 +45,7 @@
             <p><img src="{{ url_for('static', filename='main_bg.jpg') }}" alt=""></p>
         </div>
         <div class="content-wrap">
+<<<<<<< HEAD
             <div class="help-box">
                 <p class="img"><img src="{{ url_for('static',filename='end.jpeg') }}" alt=""></p>
                 <p class="info"><strong>류지우</strong> <strong>110동 110호</strong></p>
@@ -84,6 +89,41 @@
                     <button type="button" class="btn btn-outline-primary">자세히 보기</button>
                 </div>
             </div>
+=======
+            {% for post in posts %}
+                <input type="hidden" id="content" value="{{ post.content }}">
+                {% if name == post.writer %}
+                    <div class="help-box" onclick=window.location.href="/detail/{{ post.num }}">
+                        <p class="img"><img src="static/pics/{{ post.file }}" alt=""></p>
+                        {% if post.anonymous == "on" %}
+                            <p class="info"><strong>익명</strong></p>
+                        {% else %}
+                            <p class="info"><strong>{{ post.writer }}</strong> <strong>{{ post.address }}</strong></p>
+                        {% endif %}
+                        <p class="txt-box">{{ post.content }}</p>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary">자세히 보기</button>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary" onclick="location.href='{{ url_for('write') }}'">수정하기</button>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="help-box" onclick=window.location.href="/detail/{{ post.num }}">
+                        <p class="img"><img src="static/pics/{{ post.file }}" alt=""></p>
+                        {% if post.anonymous == "on" %}
+                            <p class="info"><strong>익명</strong></p>
+                        {% else %}
+                            <p class="info"><strong>{{ post.writer }}</strong> <strong>{{ post.address }}</strong></p>
+                        {% endif %}
+                        <p class="txt-box">{{ post.content }}</p>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary">자세히 보기</button>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+>>>>>>> master
         </div>
     </div>
 </body>

@@ -2,6 +2,7 @@ $(document).ready(function () {
     post_list()
 })
 
+<<<<<<< HEAD
 function post_list() {
     $.ajax({
         type: "GET",
@@ -13,6 +14,8 @@ function post_list() {
     });
 }
 
+=======
+>>>>>>> master
 // 로그인
 function sign_in() {
     let email = $("#input-email").val()
@@ -216,7 +219,10 @@ function save_order() {
             window.location.reload()
         }
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 }
 
 $(function () {
@@ -235,6 +241,43 @@ function readURL(input) {
     }
 }
 
+<<<<<<< HEAD
+=======
+function post_list() {
+    $('#content-wrap').empty()
+    let writer = $('#writer').val()
+    $.ajax({
+        type: "GET",
+        url: "/main",
+        data: {},
+        success: function (response) {
+            let posts = response['posts']
+            for (let i = 0; i < posts.length; i++) {
+                let post = posts[i]
+                let temp_html = `<div class="help-box" onclick=window.location.href="/detail/${post['num']}">
+                                                <p class="img"><img src="static/pics/${post['file']}" alt=""></p>
+                                                <p class="info"><strong>${post['writer']}</strong> <strong>${post['address']}</strong></p>
+                                                <p class="txt-box">${post['content']}</p>
+                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                    <button type="button" class="btn btn-outline-primary">자세히 보기</button>
+                                                </div>
+                                            </div>`
+                $('#content-wrap').append(temp_html)
+
+            }
+
+        }
+    });
+}
+
+window.onload = function() {
+if(!window.location.hash) {
+window.location = window.location + '#loaded';
+window.location.reload();
+}
+}
+
+>>>>>>> master
 // function main(){
 //     window.location.href="{{ url_for('main') }}"
 // }

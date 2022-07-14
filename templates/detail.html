@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -83,6 +84,30 @@
 
     </style>
 
+=======
+
+    <title>상세 페이지</title>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='reset.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <!--  //css  -->
+
+    <!-- js -->
+    <script src="https://kit.fontawesome.com/575347b31c.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="{{ url_for('static', filename ='all.js') }}"></script>
+    <!-- //js -->
+>>>>>>> master
     <script>
         $(document).ready(function () {
             show_comment();
@@ -129,12 +154,16 @@
                 }
             });
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
     </script>
 
 </head>
 <body>
+<<<<<<< HEAD
 <div class="wrap">
     {% set num = index[5] %}
     <input type="hidden" value="{{ num }}" id="comment-num">
@@ -184,6 +213,98 @@
     </div>
 </div>
 
+=======
+<div class="header">
+    <h1><a href="{{ url_for('main') }}"><strong>우아해 <i class="fa-solid fa-screwdriver-wrench"></i></strong></a></h1>
+    <div class="btn-wrap">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" onclick="location.href='{{ url_for('write') }}'">
+                건의사항
+            </button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary is-sparta is-outlined" aria-label="logout"
+                    onclick="sign_out()">로그아웃 <span class="icon is-small"><i class="fa fa-sign-out"
+                                                                             aria-hidden="true"></i></span></button>
+        </div>
+    </div>
+</div>
+<div class="content-bg">
+    <div class="detail-wrap">
+        <div class="top-content">
+            {% set num = index[5] %}
+            <input type="hidden" value="{{ num }}" id="comment-num">
+            <div class="img-info">
+                {% set file = index[1] %}
+                <img class="detail-img" src="/static/pics/{{ file }}">
+            </div>
+            <div class="writer-info">
+                {% set anonymous = index[2] %}
+                {% if anonymous == "on" %}
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">작성자</span>
+                        <input type="text" class="form-control form-control-sm" id="writer"
+                               aria-label=".form-control-lg example"
+                               value="익명" readonly onfocus="this.blur();">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">동, 호수</span>
+                        <input class="form-control form-control-sm" id="address" type="text"
+                               aria-label=".form-control-lg example" value="익명" readonly onfocus="this.blur();">
+                    </div>
+                    {#                <label class="writer">작성자</label><input type="text" value="익명" readonly onfocus="this.blur();"><br>#}
+                    {#                <label class="address" style="margin-top: 10px">동•호수</label>#}
+                    {#                <input  type="text" value="익명" readonly onfocus="this.blur();">#}
+                {% else %}
+                    {% set writer = index[3] %}
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text writer" id="inputGroup-sizing-default">작성자</span>
+                        <input class="form-control form-control-sm" id="address" type="text"
+                               aria-label=".form-control-lg example" value="{{ writer }}" readonly
+                               onfocus="this.blur();">
+                    </div>
+                    {% set address = index[4] %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text address" id="inputGroup-sizing-default">동, 호수</span>
+                        <input class="form-control form-control-sm" id="address" type="text"
+                               aria-label=".form-control-lg example" value="{{ address }}" readonly
+                               onfocus="this.blur();">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="textbox-wrap">
+            <div class="textbox">
+                <div class="mb-7">
+                    <p class="tit">건의 내용</p>
+                    {% set content = index[0] %}
+                    <textarea cols=80" rows="7" readonly onfocus="this.blur();"> {{ content }} </textarea>
+                </div>
+            </div>
+            <div class="input-group mb-5">
+                <input type="text" class="form-control commentbox" id="comment" placeholder="댓글을 입력해주세요~!"
+                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" onclick="save_comment()" type="button" id="button-addon2">댓글 등록</button>
+            </div>
+            <ul id="order-box">
+                <li class="ub-content">
+                    <p class="usertxt ub-word">댓글 추가</p>
+                </li>
+            </ul>
+            <div class="btn">
+                {% set writer = index[3] %}
+                {% if name == writer %}
+                    <button type="button" class="btn btn-primary" onclick="location.href='{{ url_for('write') }}'">수정하기
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('main') }}';">돌아가기</button>
+                {% else %}
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('main') }}';">돌아가기</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> master
 </body>
 </html>
 
