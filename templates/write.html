@@ -133,31 +133,41 @@
 <div class="write-wrap">
     <div class="top-content">
         <div class="card-img">
-            <input type="file" class="custom-file-input" id="file">
+            <form action="${pageContext.request.contextPath}/updatetNoticePro.do" method="post"
+                  enctype="multipart/form-data" name="noticeForm">
+                <input type='file' id="file" name="filename"/>
+                <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" width="280px"
+                     height="270px;"/>
+            </form>
         </div>
         <div class="card2-info">
             <div class="chk">
                 <div id="anonymous_info">
-                    <input type="checkbox" name="anonymous" id="anonymous0" class="selec_chk">
-                    <label for="anonymous0">익명</label>
-                </div>
-                <div id="secret_info">
-                    <input type="checkbox" name="secret" id="secret0" class="selec_chk">
-                    <label for="secret0">비밀글</label>
+                    <input type="checkbox" name="anonymous" id="anonymous" class="selec_chk">
+                    <label for="anonymous">익명</label>
                 </div>
             </div>
             <div class="info">
-                <p><span>이름:</span><input class="form-control form-control-sm" id="name" type="text" aria-label=".form-control-lg example" value="{{ user_info.name }}"></p>
-                <p><span>동, 호수:</span><input class="form-control form-control-sm" id="address" type="text" aria-label=".form-control-lg example" value="{{ user_info.address }}"></p>
+                <p><span>이름:</span><input class="form-control form-control-sm" id="writer" type="text"
+                                          aria-label=".form-control-lg example" value="{{ user_info.name }}"></p>
+                <p><span>동, 호수:</span><input class="form-control form-control-sm" id="address" type="text"
+                                             aria-label=".form-control-lg example" value="{{ user_info.address }}"></p>
             </div>
         </div>
     </div>
     <div class="form-group">
         <textarea class="form-control2" id="content" rows="3" placeholder="글 작성"></textarea>
     </div>
+    <div class="click">
+        <button onClick="save_order();window.location.href='{{ url_for('main') }}';alert('등록이 완료되었습니다~^^')"
+                type="button" className="btn btn-warning mybtn">등록하기
+        </button>
         <button onClick="save_order();window.location.href='{{ url_for('main') }}';"
                 type="button" className="btn btn-warning mybtn">되돌아가기
         </button>
-</div>
+
+        <!--        <a href="{{ url_for('main') }}" class="btn btn-warning mybtn2" tabindex="-1"-->
+<!--           role="button" aria-disabled="true">되돌아가기</a>-->
+    </div>
 </body>
 </html>
